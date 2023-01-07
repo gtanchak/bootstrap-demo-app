@@ -1,0 +1,15 @@
+@import 'src/constants/colors.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+.bg-btn-primary  {
+  background-color: $primary;
+}
+.bg-btn-secondary  {
+  background-color: $secondary;
+}
+

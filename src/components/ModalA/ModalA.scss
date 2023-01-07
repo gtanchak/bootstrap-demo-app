@@ -1,0 +1,11 @@
+@import 'src/constants/colors.scss';
+
+.action_menu {
+    button {
+        margin:5px;
+        margin-left:0
+    }
+    .btn-transparent {
+        border-color: $primary !important;
+    }
+}
