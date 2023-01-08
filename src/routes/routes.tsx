@@ -1,7 +1,8 @@
 import { FC } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { ModalA, ModalB } from "src/components";
 import Home from "src/pages/home";
+import ModalA from "src/pages/modalA";
+import ModalB from "src/pages/modalB";
 
 const AppRoutes: FC = () => {
   const location = useLocation();

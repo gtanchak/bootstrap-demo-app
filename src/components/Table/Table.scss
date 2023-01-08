@@ -1,0 +1,11 @@
+@import 'src/constants/colors.scss';
+
+.loader {
+    text-align: center;
+    height: 100px;
+    vertical-align: middle;
+    border-bottom: 0;
+    .spinner-border {
+        color: $primary
+    }
+}

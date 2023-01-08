@@ -1,47 +1,57 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import Checkbox from "../Checkbox/Checkbox";
-import SearchBar from "../SearchBar/SearchBar";
-import "./ModalA.scss";
-import { useModalA } from "./useModalA";
+import Checkbox from "../Checkbox";
+import SearchBar from "../SearchBar";
+import { ModalProps } from "./type";
+import "./Modal.scss";
 
-const ModalA: FC = () => {
+const Modal: FC<ModalProps> = ({
+  title,
+  modalId,
+  children,
+  handleAllContacts,
+  handleCheckbox,
+  handleUsContacts,
+}) => {
   const navigate = useNavigate();
-
-  const { handleChange } = useModalA();
-
   return (
-    <div className='modal' tabIndex={-1} id='modalA'>
-      <div className='modal-dialog'>
+    <div className='modal modal-lg' tabIndex={-1} id={modalId}>
+      <div className='modal-dialog modal-dialog-scrollable'>
         <div className='modal-content'>
           <div className='modal-header'>
-            <h5 className='modal-title'>Modal A</h5>
+            <h5 className='modal-title'>{title}</h5>
             <button
               type='button'
               className='btn-close'
               data-bs-dismiss='modal'
-              aria-label='Close'
-              onClick={() => navigate(-1)}
+              onClick={() => navigate("/")}
             ></button>
           </div>
           <div className='modal-body'>
             <div className='action_menu'>
               <button
                 type='button'
+                data-bs-toggle='modal'
+                data-bs-target='#modalA'
                 className='btn btn-primary bg-btn-primary border-0'
+                onClick={handleAllContacts}
               >
                 All Contacts
               </button>
               <button
                 type='button'
+                data-bs-toggle='modal'
+                data-bs-target='#modalB'
                 className='btn btn-primary bg-btn-secondary border-0'
+                onClick={handleUsContacts}
               >
                 US Contacts
               </button>
               <button
                 type='button'
                 className='btn btn-transparent border'
-                onClick={() => navigate(-1)}
+                data-bs-dismiss='modal'
+                onClick={() => navigate("/")}
               >
                 Close
               </button>
@@ -49,9 +59,10 @@ const ModalA: FC = () => {
             <div>
               <SearchBar />
             </div>
+            {children}
           </div>
           <div className='modal-footer justify-content-start'>
-            <Checkbox onChange={handleChange} />
+            <Checkbox onChange={handleCheckbox} />
           </div>
         </div>
       </div>
@@ -59,4 +70,4 @@ const ModalA: FC = () => {
   );
 };
 
-export default ModalA;
+export default Modal;
